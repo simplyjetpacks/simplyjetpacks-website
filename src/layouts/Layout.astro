@@ -13,7 +13,7 @@ const {
   canonicalPath = "/",
 } = Astro.props;
 
-const site = Astro.site ?? new URL("https://simplyjetpacks.github.io");
+const site = Astro.site ?? new URL("https://simplyjetpacks.com");
 const canonicalUrl = new URL(canonicalPath, site);
 const ogImageUrl = new URL("/logo.png", site);
 const year = new Date().getFullYear();

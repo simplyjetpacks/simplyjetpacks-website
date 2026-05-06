@@ -18,5 +18,4 @@ Run these from the root of the project:
 Deployment is handled by the root workflow at `.github/workflows/ci.yml`.
 It runs linting, type checking, and the Astro build on pull requests and on `main`, then deploys to GitHub Pages only from `main`.
 
-The site is currently configured for `https://simplyjetpacks.github.io`.
-There is no custom-domain `public/CNAME` file committed while this GitHub-hosted domain is in use.
+The site is served from the custom domain `https://simplyjetpacks.com` via `public/CNAME`.
