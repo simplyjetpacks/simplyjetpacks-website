@@ -1,0 +1,83 @@
+---
+import "../styles/globals.css";
+
+type Props = {
+  title?: string;
+  description?: string;
+  canonicalPath?: string;
+};
+
+const {
+  title = "Simply Jetpacks",
+  description = "Simply Jetpacks - Minecraft Mod",
+  canonicalPath = "/",
+} = Astro.props;
+
+const site = Astro.site ?? new URL("https://simplyjetpacks.github.io");
+const canonicalUrl = new URL(canonicalPath, site);
+const ogImageUrl = new URL("/logo.png", site);
+const year = new Date().getFullYear();
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="/favicon.ico" sizes="any" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<meta name="theme-color" content="#FDC51E" />
+		<link rel="canonical" href={canonicalUrl.toString()} />
+		<link rel="manifest" href="/site.webmanifest" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={canonicalUrl.toString()} />
+		<meta property="og:image" content={ogImageUrl.toString()} />
+		<meta property="og:locale" content="en_GB" />
+	</head>
+	<body>
+		<div class="flex min-h-screen w-full flex-col items-center justify-between">
+			<header class="w-full px-6 pt-12">
+				<div class="mx-auto w-full max-w-4xl">
+					<a href="/" class="block transition-opacity hover:opacity-90">
+						<img
+							src="/logo.png"
+							alt="Simply Jetpacks Logo"
+							width="800"
+							height="170"
+							class="h-auto w-full"
+						/>
+					</a>
+				</div>
+			</header>
+
+			<slot />
+
+			<footer class="mt-12 flex h-[100px] w-full items-center justify-center border-t border-zinc-200 px-6">
+				<div class="flex flex-col items-center gap-2 text-center">
+					<div class="flex items-center justify-center gap-4 text-lg font-semibold">
+						<a
+							href="https://www.github.com/simplyjetpacks"
+							target="_blank"
+							rel="noopener noreferrer"
+							class="transition-colors hover:text-sj2orange"
+						>
+							GitHub
+						</a>
+						<a
+							href="https://discord.gg/v5qJysC"
+							target="_blank"
+							rel="noopener noreferrer"
+							class="transition-colors hover:text-sj2orange"
+						>
+							Discord
+						</a>
+					</div>
+					<p>&copy; Simply Jetpacks {year}</p>
+				</div>
+			</footer>
+		</div>
+	</body>
+</html>

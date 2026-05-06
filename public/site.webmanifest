@@ -1,0 +1,8 @@
+{
+  "name": "Simply Jetpacks - Minecraft Mod",
+  "short_name": "Simply Jetpacks",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#FDC51E",
+  "background_color": "#FFFFFF"
+}

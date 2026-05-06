@@ -1,0 +1,46 @@
+---
+type Props = {
+  title: string;
+  downloadHref?: string;
+  downloadsBadge?: string;
+  versionBadge?: string;
+  message?: string;
+};
+
+const { title, downloadHref, downloadsBadge, versionBadge, message } =
+  Astro.props;
+---
+
+<main class="flex w-full flex-1 flex-col items-center justify-center px-6 py-10 text-center">
+	<h1 class="text-4xl font-bold">{title}</h1>
+
+	{downloadsBadge && versionBadge && (
+		<div class="mt-6 flex flex-wrap justify-center gap-4">
+			<img src={downloadsBadge} alt={`${title} downloads`} class="max-w-full" />
+			<img src={versionBadge} alt={`${title} version`} class="max-w-full" />
+		</div>
+	)}
+
+	{downloadHref ? (
+		<p class="mt-6 text-lg">
+			Downloads for this mod can be found
+			<a
+				href={downloadHref}
+				target="_blank"
+				rel="noopener noreferrer"
+				class="font-semibold text-sj2orange transition-colors hover:underline"
+			>
+				 here
+			</a>
+		</p>
+	) : message ? (
+		<p class="mt-6 text-lg">{message}</p>
+	) : null}
+
+	<a
+		href="/"
+		class="mt-8 rounded bg-sj2orange px-4 py-2 font-bold text-white transition-opacity hover:opacity-90"
+	>
+		Return Home
+	</a>
+</main>
